@@ -18,11 +18,12 @@ const useFirestore = () => {
     const getData = async()=>{
         try {
             setLoading(true)
+            
             const dataRef = collection(db, "urls")
             const q = query(dataRef,where('uid',"==",'otro'))
 
             const querySnapshot = await getDocs(q);
-            
+
             const dataDB = querySnapshot.docs.map(doc =>doc.data())
             setData(dataDB)
         } catch (error) {
