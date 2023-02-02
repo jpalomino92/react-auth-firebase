@@ -1,7 +1,23 @@
+import Loading from "../components/Loading";
+import Title from "../components/Title";
+import useFirestore from "../hooks/useFirestore";
+
 const Home = () => {
+  const { data, error, loading } = useFirestore();
+
+  if (loading) return <Loading />;
+  if (error) return <p>{error}</p>;
+
   return (
     <>
-      <h1>Home</h1>
+      <Title text="Home" />
+      {data.map((item) => (
+        <div key={item.nanoid}>
+          <p>{item.nanoid}</p>
+          <p>{item.origin}</p>
+          <p>{item.uid}</p>
+        </div>
+      ))}
     </>
   );
 };
