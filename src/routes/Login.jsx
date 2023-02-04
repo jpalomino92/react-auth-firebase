@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
-import ButtonLoading from "../components/ButtonLoading";
 import FormError from "../components/FormError";
 import FormInput from "../components/FromInput";
 import Title from "../components/Title";
@@ -71,7 +70,8 @@ const Login = () => {
         >
           <FormError error={errors.password} />
         </FormInput>
-        {loading ? <ButtonLoading /> : <Button text="Login" type="submit" />}
+
+        <Button text="Login" type="submit" color="blue" loading={loading} />
       </form>
     </>
   );
