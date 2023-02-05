@@ -12,6 +12,7 @@ import LayoutRequireAuth from "./components/layout/LayoutRequireAuth";
 import { LayoutContainerForm } from "./components/layout/LayoutContainerForm";
 import Navbar from "./components/Navbar";
 import Loading from "./components/Loading";
+import LayoutRedirect from "./components/layout/LayoutRedirect";
 
 const App = () => {
   const { user } = useContext(UserContext);
@@ -35,6 +36,10 @@ const App = () => {
         <Route path="/" element={<LayoutContainerForm />}>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
+        </Route>
+
+        <Route path="/:nanoid" element={<LayoutRedirect />}>
+          <Route index element={<NotFound />} />
         </Route>
       </Routes>
     </>
